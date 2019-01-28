@@ -4,3 +4,10 @@
   fuctions by fuctions, for example, relu , pooling , and sigmoid
 - It supports python now, and more in the future
 - powered by Velitus.tech
+## TO-DO List
+### Activate Fuction
+- []Sigmoid
+- []Relu
+### Layers
+- []Fully Connected layer
+- []Convolution layer
