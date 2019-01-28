@@ -6,8 +6,8 @@
 - powered by Velitus.tech
 ## TO-DO List
 ### Activate Fuction
-- []Sigmoid
-- []Relu
+- [ ]Sigmoid
+- [ ]Relu
 ### Layers
-- []Fully Connected layer
-- []Convolution layer
+- [ ]Fully Connected layer
+- [ ]Convolution layer
