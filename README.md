@@ -8,7 +8,8 @@
 ### Activate Fuction
 - [ ] Relu
 - [ ] Sigmoid
-
+- [ ] Tanh
+- [ ] Leaky ReLU
 ### Layers
 - [ ] Fully Connected layer
 - [ ] Convolution layer
