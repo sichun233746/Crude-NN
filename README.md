@@ -19,3 +19,6 @@
 ### Optimization
 - [ ] SGD
 - [ ] Adam
+### Method
+- [ ] Autograd
+- [ ] data
