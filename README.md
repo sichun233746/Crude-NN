@@ -16,3 +16,6 @@
 ### Loss Fuction
 - [ ] Mean square error (MSE)
 - [ ] Mean absolute error (MAE)
+### Optimization
+- [ ] SGD
+- [ ] Adam
