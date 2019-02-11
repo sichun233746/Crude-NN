@@ -22,3 +22,6 @@
 ### Method
 - [ ] Autograd
 - [ ] data
+### Deploy
+- [ ] Cuda
+- [ ] CPU
