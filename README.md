@@ -25,5 +25,6 @@
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
+- [ ] Distributed
 ### Format
 - [ ] ONNX
