@@ -3,7 +3,7 @@
   start from layers by layers, for example, convolution layer and fully connected layer
   fuctions by fuctions, for example, relu , pooling , and sigmoid
 - It supports python now, and more in the future
-- powered by Velitus.tech
+- Powered by Velitus.tech
 ## TO-DO List
 ### Activate Fuction
 - [ ] Relu
@@ -25,3 +25,5 @@
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
+### Format
+- [ ] ONNX
