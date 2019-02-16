@@ -26,5 +26,6 @@
 - [ ] Cuda
 - [ ] CPU
 - [ ] Distributed
-### Format
+### Format/Storage/Data Utilize
 - [ ] ONNX
+
