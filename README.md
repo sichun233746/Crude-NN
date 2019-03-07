@@ -30,3 +30,6 @@
 - [ ] ONNX
 - [ ] Storage
 ### Model
+- [ ] CNN
+- [ ] RNN
+- [ ] LSTM
