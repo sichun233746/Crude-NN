@@ -34,3 +34,4 @@
 - [ ] RNN
 - [ ] LSTM
 ### Case/Application
+- [ ] MNIST classfication
