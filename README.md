@@ -33,6 +33,7 @@
 - [ ] CNN
 - [ ] RNN
 - [ ] LSTM
+- [ ] ResNet
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
