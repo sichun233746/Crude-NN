@@ -35,3 +35,4 @@
 - [ ] LSTM
 ### Case/Application
 - [ ] MNIST classfication
+- [ ] Binary Addition
