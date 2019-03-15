@@ -37,3 +37,4 @@
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
+### Visualize
