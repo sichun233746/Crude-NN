@@ -38,3 +38,5 @@
 - [ ] MNIST classfication
 - [ ] Binary Addition
 ### Visualize
+- [ ] Loss graph
+- [ ] Accuracy curve
