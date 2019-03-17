@@ -37,6 +37,7 @@
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
+- [ ] Iris classfication
 ### Visualize
 - [ ] Loss graph
 - [ ] Accuracy curve
