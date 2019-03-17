@@ -24,6 +24,8 @@
 - [ ] Autograd
 - [ ] data
 ### Data processing
+- [ ] Crop
+- [ ] RGB to Gray
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
