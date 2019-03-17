@@ -10,6 +10,7 @@
 - [ ] Sigmoid
 - [ ] Tanh
 - [ ] Leaky ReLU
+- [ ] Max out
 ### Layers
 - [ ] Fully Connected layer
 - [ ] Convolution layer
