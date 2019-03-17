@@ -40,3 +40,5 @@
 ### Visualize
 - [ ] Loss graph
 - [ ] Accuracy curve
+- [ ] Hot spot
+- [ ] Compute Graph
