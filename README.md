@@ -12,6 +12,8 @@
 - [ ] Leaky ReLU
 - [ ] Max out
 - [ ] Hyperbolic tangent function
+- [ ] Softplus function
+- [ ] Radial basis function
 ### Layers
 - [ ] Fully Connected layer
 - [ ] Convolution layer
