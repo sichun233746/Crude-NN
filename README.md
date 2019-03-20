@@ -11,6 +11,7 @@
 - [ ] Tanh
 - [ ] Leaky ReLU
 - [ ] Max out
+- [ ] Hyperbolic tangent function
 ### Layers
 - [ ] Fully Connected layer
 - [ ] Convolution layer
