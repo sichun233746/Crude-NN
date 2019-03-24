@@ -23,6 +23,7 @@
 ### Optimization
 - [ ] SGD
 - [ ] Adam
+- [ ] Momentum
 ### Method
 - [ ] Autograd
 - [ ] data
