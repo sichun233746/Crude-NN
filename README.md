@@ -43,7 +43,7 @@
 - [ ] LSTM
 - [ ] ResNet
 - [ ] FCN
-- 
+- [ ] U-Net
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
