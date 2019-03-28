@@ -39,6 +39,7 @@
 ### Format/Storage/Data Utilize
 - [ ] ONNX
 - [ ] Storage
+- [ ] Data loader
 ### Model
 - [ ] CNN
 - [ ] RNN
