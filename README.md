@@ -34,6 +34,7 @@
 - [ ] Cuda
 - [ ] CPU
 - [ ] Distributed
+- [ ] onBoard
 ### Format/Storage/Data Utilize
 - [ ] ONNX
 - [ ] Storage
