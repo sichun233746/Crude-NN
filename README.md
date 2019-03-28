@@ -17,6 +17,7 @@
 ### Layers
 - [ ] Fully Connected layer
 - [ ] Convolution layer
+- [ ] Linear layer
 ### Loss Fuction
 - [ ] Mean square error (MSE)
 - [ ] Mean absolute error (MAE)
