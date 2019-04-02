@@ -2,6 +2,7 @@
 - It's a neural network library implemented from scatch.
   start from layers by layers, for example, convolution layer and fully connected layer
   fuctions by fuctions, for example, relu , pooling , and sigmoid
+- Nor only for single machine, also surport distributed system  
 - It supports python now, and more in the future
 - Powered by Velitus.tech
 ## TO-DO List
