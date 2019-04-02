@@ -28,6 +28,7 @@
 ### Method
 - [ ] Autograd
 - [ ] data
+- [ ] Normalization
 ### Data processing
 - [ ] Crop
 - [ ] RGB to Gray
