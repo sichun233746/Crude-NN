@@ -33,6 +33,7 @@
 ### Data processing
 - [ ] Crop
 - [ ] RGB to Gray
+- [ ] pikle
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
