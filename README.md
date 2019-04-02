@@ -58,3 +58,4 @@
 - [ ] Accuracy curve
 - [ ] Hot spot
 - [ ] Compute Graph
+- [ ] Real Time update
