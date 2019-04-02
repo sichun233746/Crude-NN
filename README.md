@@ -25,6 +25,7 @@
 - [ ] SGD
 - [ ] Adam
 - [ ] Momentum
+- [ ] Ada
 ### Method
 - [ ] Autograd
 - [ ] data
