@@ -22,6 +22,8 @@
 ### Loss Fuction
 - [ ] Mean square error (MSE)
 - [ ] Mean absolute error (MAE)
+- [ ] L1 loss
+- [ ] Cross entropy loss function
 ### Optimization
 - [ ] SGD
 - [ ] Adam
