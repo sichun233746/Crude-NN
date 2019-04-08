@@ -24,6 +24,8 @@
 - [ ] Mean absolute error (MAE)
 - [ ] L1 loss
 - [ ] Cross entropy loss function
+- [ ] Huber Loss
+- [ ] Focal loss
 ### Optimization
 - [ ] SGD
 - [ ] Adam
