@@ -35,6 +35,7 @@
 - [ ] Autograd
 - [ ] data
 - [ ] Normalization
+- [ ] Drop out
 ### Data processing
 - [ ] Crop
 - [ ] RGB to Gray
