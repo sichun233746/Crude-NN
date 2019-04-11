@@ -40,6 +40,7 @@
 - [ ] Crop
 - [ ] RGB to Gray
 - [ ] pikle
+- [ ] Argumentation
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
