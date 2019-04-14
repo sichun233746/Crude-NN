@@ -41,6 +41,7 @@
 - [ ] RGB to Gray
 - [ ] pikle
 - [ ] Argumentation
+- [ ] Flip
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
