@@ -47,6 +47,7 @@
 - [ ] CPU
 - [ ] Distributed
 - [ ] onBoard
+- [ ] mobile
 ### Format/Storage/Data Utilize
 - [ ] ONNX
 - [ ] Storage
