@@ -69,3 +69,4 @@
 - [ ] Hot spot
 - [ ] Compute Graph
 - [ ] Real Time update
+### Analyze
