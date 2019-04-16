@@ -70,3 +70,4 @@
 - [ ] Compute Graph
 - [ ] Real Time update
 ### Analyze
+- [ ] Time
