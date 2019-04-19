@@ -71,3 +71,5 @@
 - [ ] Real Time update
 ### Analyze
 - [ ] Time
+- [ ] Space
+- [ ] Efficiency
