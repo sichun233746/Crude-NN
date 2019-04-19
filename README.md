@@ -42,6 +42,7 @@
 - [ ] pikle
 - [ ] Argumentation
 - [ ] Flip
+- [ ] Tensor
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
