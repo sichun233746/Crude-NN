@@ -60,6 +60,8 @@
 - [ ] ResNet
 - [ ] FCN
 - [ ] U-Net
+- [ ] GAN
+- [ ] W-GAN
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
