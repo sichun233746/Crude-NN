@@ -62,6 +62,7 @@
 - [ ] U-Net
 - [ ] GAN
 - [ ] W-GAN
+- [ ] VAE
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
