@@ -63,6 +63,7 @@
 - [ ] GAN
 - [ ] W-GAN
 - [ ] VAE
+- [ ] Conditional-VAE
 ### Case/Application
 - [ ] MNIST classfication
 - [ ] Binary Addition
