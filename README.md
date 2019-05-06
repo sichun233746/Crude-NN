@@ -68,7 +68,7 @@
 - [ ] MNIST classfication
 - [ ] Binary Addition
 - [ ] Iris classfication
-- [ ] cifar10 classfication
+- [ ] Cifar10 classfication
 ### Visualize
 - [ ] Loss graph
 - [ ] Accuracy curve
