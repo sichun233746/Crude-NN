@@ -61,7 +61,9 @@
 - [ ] FCN
 - [ ] U-Net
 - [ ] GAN
+- [ ] DCGAN
 - [ ] W-GAN
+- [ ] infoGAN
 - [ ] VAE
 - [ ] Conditional-VAE
 ### Case/Application
