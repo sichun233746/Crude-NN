@@ -68,6 +68,7 @@
 - [ ] Conditional-VAE
 ### Case/Application
 - [ ] MNIST classfication
+- [ ] MNIST generation
 - [ ] Binary Addition
 - [ ] Iris classfication
 - [ ] Cifar10 classfication
