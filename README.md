@@ -64,6 +64,7 @@
 - [ ] DCGAN
 - [ ] W-GAN
 - [ ] infoGAN
+- [ ] CycleGAN
 - [ ] VAE
 - [ ] Conditional-VAE
 ### Case/Application
