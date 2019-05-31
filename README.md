@@ -23,6 +23,7 @@
 - [ ] Mean square error (MSE)
 - [ ] Mean absolute error (MAE)
 - [ ] L1 loss
+- [ ] L2 loss
 - [ ] Cross entropy loss function
 - [ ] Huber Loss
 - [ ] Focal loss
