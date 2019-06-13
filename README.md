@@ -74,6 +74,7 @@
 - [ ] Binary Addition
 - [ ] Iris classfication
 - [ ] Cifar10 classfication
+- [ ] House price predict
 ### Visualize
 - [ ] Loss graph
 - [ ] Accuracy curve
