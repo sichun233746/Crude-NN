@@ -54,6 +54,7 @@
 ### Deploy
 - [ ] Cuda
 - [ ] CPU
+- [ ] Muti-GPU
 - [ ] Distributed
 - [ ] onBoard
 - [ ] mobile
