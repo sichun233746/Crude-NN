@@ -43,6 +43,7 @@
 - [ ] data
 - [ ] Normalization
 - [ ] Drop out
+- [ ] Batch
 ### Data processing
 - [ ] Crop
 - [ ] RGB to Gray
