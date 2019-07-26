@@ -32,6 +32,12 @@
 - [ ] Adam
 - [ ] Momentum
 - [ ] Ada
+- [ ] Adamax
+- [ ] Adagrad
+- [ ] Adadelta
+- [ ] RMSprop
+- [ ] Nesterov
+- [ ] Nadam
 ### Method
 - [ ] Autograd
 - [ ] data
