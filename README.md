@@ -44,7 +44,7 @@
 - [ ] Normalization
 - [ ] Drop out
 - [ ] Batch
-- [ ] E
+- [ ] Epoach
 ### Data processing
 - [ ] Crop
 - [ ] RGB to Gray
