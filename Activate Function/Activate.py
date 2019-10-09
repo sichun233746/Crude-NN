@@ -9,6 +9,3 @@ def Leaky_ReLU(x,lamda = 0.01):
     return np.where(x > 0, x, lamda * x)
 def Softplus(x):
     return np.log(1.0 + np.exp(-x))
-    
-x = np.asarray([1,-2,3])
-print(sigmoid(x))
