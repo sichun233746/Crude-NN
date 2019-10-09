@@ -28,3 +28,10 @@ def Load_MNIST(mode = 'train'):
         data_label = np.frombuffer(byte, dtype = np.uint8, count = -1)
         data_label = data_label.reshape((image_num,1)) # Data_number * 1
     return data_image,data_label
+def Show_data(images, labels):
+    import matplotlib.pyplot as plt
+    images_num  = images.shape[0]
+    for i in range(images_num):
+        plt.imshow(images[i][0])
+        print(labels[i][0])
+        plt.show()
