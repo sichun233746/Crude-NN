@@ -16,6 +16,7 @@ class Conv2d(object):
 		for i in range(input_shape[0]):
 			for j in range(input_shape[1]):
 				padded_x[i,j,self.padding[0]:-self.padding[0],self.padding[1]:-self.padding[1]] = x[i][j]
+		self.reg = padded_x
 		height = (padded_height - self.kernel_size[0] // self.stride[0]) + 1
 		width  = (padded_width  - self.kernel_size[1] // self.stride[1]) + 1
 		batch_size = input_shape[0]
@@ -24,11 +25,24 @@ class Conv2d(object):
 		y = 0
 		for image in range(batch_size):
 			y = 0
-			for i in range(0,input_shape[2],self.stride[0]):
+			for i in range(0,height,self.stride[0]):
 				x = 0
-				for j in range(0,input_shape[3],self.stride[1]):
-					out_x[image,:,x,y] = (self.kernel * padded_x[image,:,i:i+self.stride[0],j:j+self.stride[1]]).sum(axis=(1,2,3))
+				for j in range(0,width,self.stride[1]):
+					out_x[image,:,x,y] = (self.kernel * padded_x[image,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]]).sum(axis=(1,2,3))
 					x += 1
 				y += 1
-		print(out_x.shape)
-
+		return out_x
+	def backprop(self, delta_loss):
+		delta_kernel = np.zeros(self.kernel.shape)
+		batch_size = self.reg.shape[0]
+		x = 0
+		y = 0
+		for image in range(batch_size):
+			y = 0
+			for i in range(0,delta_loss.shape[2],self.stride[0]):
+				x = 0
+				for j in range(0,delta_loss.shape[3],self.stride[1]):
+					delta_kernel += (delta_loss[image,:,x,y].reshape(-1,1,1,1) * np.broadcast_to(self.reg[image,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]],self.kernel.shape))
+		delta_kernel /= batch_size
+		self.kernel -= delta_kernel
+		
