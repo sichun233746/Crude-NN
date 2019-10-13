@@ -22,4 +22,4 @@ class Linear():
         self.weight -= lr*delta_w
         if self.is_bias:
             self.bias -= lr*np.mean(np.asarray(delta_loss), axis = 0)
-        return self.weight+delta_w
+        return delta_loss * (self.weight+lr*delta_w).T

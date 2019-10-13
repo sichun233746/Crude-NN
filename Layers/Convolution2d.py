@@ -42,7 +42,10 @@ class Conv2d(object):
 		for i in range(0,delta_loss.shape[2],self.stride[0]):
 			y = 0
 			for j in range(0,delta_loss.shape[3],self.stride[1]):
-				delta_kernel += (delta_loss[:,:,x,y].reshape(batch_size, self.out_channels, 1, 1, 1) * self.reg[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].reshape(batch_size, 1, self.in_channels, self.kernel_size[0], self.kernel_size[1],) ).mean(axis = 0)
+				tmp = np.zeros((batch_size, self.in_channels, self.kernel_size[0], self.kernel_size[1]))
+				tmp2 = self.reg[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]]
+				tmp[:,:,:tmp2.shape[2],:tmp2.shape[3]] = tmp2
+				delta_kernel += (delta_loss[:,:,x,y].reshape(batch_size, self.out_channels, 1, 1, 1) *  tmp.reshape(((batch_size, 1, self.in_channels, self.kernel_size[0], self.kernel_size[1])))).mean(axis = 0)
 				y += 1
 			x += 1
 		origin_kernel = self.kernel
@@ -58,7 +61,10 @@ class Conv2d(object):
 		for i in range(0,self.reg.shape[2],self.stride[0]):
 			y = 0
 			for j in range(0,self.reg.shape[3],self.stride[1]):
-				delta_x[:,:,x,y] = (flipped_kernel.reshape(1,self.in_channels,self.out_channels,self.kernel_size[0],self.kernel_size[1]) * padded_loss[:, : , i:i+self.kernel_size[0], j:j+self.kernel_size[1]].reshape(batch_size,1,self.out_channels,self.kernel_size[0],self.kernel_size[1])).sum(axis=(2,3,4))
+				tmp = np.zeros((batch_size,self.out_channels,self.kernel_size[0],self.kernel_size[1]))
+				tmp2 = padded_loss[:, : , i:i+self.kernel_size[0], j:j+self.kernel_size[1]]
+				tmp[:,:,:tmp2.shape[2],:tmp2.shape[3]] = tmp2
+				delta_x[:,:,x,y] = (flipped_kernel.reshape(1,self.in_channels,self.out_channels,self.kernel_size[0],self.kernel_size[1]) * tmp.reshape((batch_size,1,self.out_channels,self.kernel_size[0],self.kernel_size[1]))).sum(axis=(2,3,4))
 				y += 1
 			x += 1
 		delta_x = delta_x[:,:,self.padding[0]:-self.padding[0],self.padding[1]:-self.padding[1]]
