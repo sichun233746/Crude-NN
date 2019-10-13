@@ -1,32 +1,42 @@
 import numpy as np
 class Maxpool2d(object):
-	def __init__(self, kernel_size, stride = None, padding = 0):
+	def __init__(self, kernel_size):
 		self.kernel_size = kernel_size
-		self.stride = stride
-		self.padding = padding
 	def forward(self,x):
-		self.reg = x
-		input_shape = x.shape
-		padded_height  = input_shape[2]+self.padding[0]*2
-		padded_width  = input_shape[3]+self.padding[1]*2
-		padded_x = np.zeros((input_shape[0],input_shape[1],padded_height,padded_width))
-		for i in range(input_shape[0]):
-			for j in range(input_shape[1]):
-				padded_x[i,j,self.padding[0]:-self.padding[0],self.padding[1]:-self.padding[1]] = x[i][j]
-		height = (padded_height - self.kernel_size[0] // self.stride[0]) + 1
-		width  = (padded_width  - self.kernel_size[1] // self.stride[1]) + 1
-		batch_size = input_shape[0]
-		out_x = np.zeros((batch_size, self.out_channels, height, width))
-		x = 0
-		y = 0
-		for image in range(batch_size):
-			y = 0
-			for i in range(0,input_shape[2],self.stride[0]):
-				x = 0
-				for j in range(0,input_shape[3],self.stride[1]):
-					out_x[image,:,x,y] = (self.kernel * padded_x[image,:,i:i+self.stride[0],j:j+self.stride[1]]).sum(axis=(1,2,3))
-					x += 1
-				y += 1
-		return x
+		height = x.shape[2]
+		width  = x.shape[3]
+		batch_size = x.shape[0]
+		channels = x.shape[1]
+		out_x = np.zeros((batch_size, channels, np.ceil((height/self.kernel_size[0])).astype(np.int), np.ceil((width/self.kernel_size[1])).astype(np.int)))
+		self.reg = np.zeros((batch_size, channels, np.ceil((height/self.kernel_size[0])).astype(np.int), np.ceil((width/self.kernel_size[1])).astype(np.int)),dtype = np.int) #to rember which pixel we choose
+		self.origin_size = x.shape
+		idx = 0
+		jdx = 0
+		for i in range(0,height,self.kernel_size[0]):
+			jdx = 0
+			for j in range(0,width,self.kernel_size[1]):
+				sliding_window = x[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]]
+				out_x[:,:,idx,jdx] = sliding_window.max(axis = (2,3))
+				self.reg[:,:,idx,jdx] = sliding_window.reshape(batch_size,channels,-1).argmax(axis = 2 ).astype(np.int)
+				jdx += 1
+			idx += 1
+		return out_x
+
 	def backprop(self, delta_loss):
+		delta_w = np.zeros(self.origin_size)
+		height = self.origin_size[2]
+		width = self.origin_size[3]
+		for image in range(self.origin_size[0]):
+			for channel in range(self.origin_size[1]):
+				idx = 0
+				for i in range(0,height,self.kernel_size[0]):
+					jdx = 0
+					for j in range(0,width,self.kernel_size[1]):
+						sliding_window = np.zeros(delta_w[image,channel,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].reshape(-1).shape)
+						sliding_window[self.reg[image,channel,idx,jdx]] = delta_loss[image,channel,idx,jdx]
+						sliding_window = sliding_window.reshape(delta_w[image,channel,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].shape)
+						delta_w[image,channel,i:i+self.kernel_size[0],j:j+self.kernel_size[1]] = sliding_window
+						jdx += 1
+					idx += 1
+		return delta_w
 
