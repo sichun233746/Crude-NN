@@ -26,29 +26,25 @@ class Conv2d(object):
 		out_x = np.zeros((batch_size, self.out_channels, height, width))
 		x = 0
 		y = 0
-		for image in range(batch_size):
-			x = 0
-			for i in range(0,height,self.stride[0]):
-				y = 0
-				for j in range(0,width,self.stride[1]):
-					out_x[image,:,x,y] = (self.kernel * padded_x[image,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]]).sum(axis=(1,2,3))
-					y += 1
-				x += 1
+		for i in range(0,height,self.stride[0]):
+			y = 0
+			for j in range(0,width,self.stride[1]):
+				sliding_window = padded_x[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]]
+				output = (self.kernel * sliding_window.reshape((sliding_window.shape[0],1,sliding_window.shape[1],sliding_window.shape[2],sliding_window.shape[3])))
+				out_x[:,:,x,y] = output.sum(axis=(2,3,4))
+				y += 1
+			x += 1
 		return out_x
 	def backprop(self, delta_loss, lr):
 		delta_kernel = np.zeros(self.kernel.shape)
 		batch_size = self.reg.shape[0]
 		x = 0
-		y = 0
-		for image in range(batch_size):
-			x = 0
-			for i in range(0,delta_loss.shape[2],self.stride[0]):
-				y = 0
-				for j in range(0,delta_loss.shape[3],self.stride[1]):
-					delta_kernel += (delta_loss[image,:,x,y].reshape(-1,1,1,1) * np.broadcast_to(self.reg[image,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]],self.kernel.shape))
-					y += 1
-				x += 1
-		delta_kernel /= batch_size
+		for i in range(0,delta_loss.shape[2],self.stride[0]):
+			y = 0
+			for j in range(0,delta_loss.shape[3],self.stride[1]):
+				delta_kernel += (delta_loss[:,:,x,y].reshape(batch_size, self.out_channels, 1, 1, 1) * self.reg[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].reshape(batch_size, 1, self.in_channels, self.kernel_size[0], self.kernel_size[1],) ).mean(axis = 0)
+				y += 1
+			x += 1
 		origin_kernel = self.kernel
 		self.kernel -= lr * delta_kernel
 		if self.is_bias:
@@ -58,13 +54,12 @@ class Conv2d(object):
 		padded_loss = np.zeros((delta_loss.shape[0],delta_loss.shape[1],delta_loss.shape[2]+2,delta_loss.shape[3]+2))
 		padded_loss[:,:,1:-1,1:-1] = delta_loss
 		delta_x = np.zeros(self.reg.shape)
-		for image in range(batch_size):
-			x = 0
-			for i in range(0,self.reg.shape[2],self.stride[0]):
-				y = 0
-				for j in range(0,self.reg.shape[3],self.stride[1]):
-					delta_x[image,:,x,y] = (flipped_kernel * padded_loss[image, : , i:i+self.kernel_size[0], j:j+self.kernel_size[1]]).sum(axis=(1,2,3))
-					y += 1
-				x += 1
+		x = 0
+		for i in range(0,self.reg.shape[2],self.stride[0]):
+			y = 0
+			for j in range(0,self.reg.shape[3],self.stride[1]):
+				delta_x[:,:,x,y] = (flipped_kernel.reshape(1,self.in_channels,self.out_channels,self.kernel_size[0],self.kernel_size[1]) * padded_loss[:, : , i:i+self.kernel_size[0], j:j+self.kernel_size[1]].reshape(batch_size,1,self.out_channels,self.kernel_size[0],self.kernel_size[1])).sum(axis=(2,3,4))
+				y += 1
+			x += 1
 		delta_x = delta_x[:,:,self.padding[0]:-self.padding[0],self.padding[1]:-self.padding[1]]
 		return delta_x

@@ -26,17 +26,15 @@ class Maxpool2d(object):
 		delta_w = np.zeros(self.origin_size)
 		height = self.origin_size[2]
 		width = self.origin_size[3]
-		for image in range(self.origin_size[0]):
-			for channel in range(self.origin_size[1]):
-				idx = 0
-				for i in range(0,height,self.kernel_size[0]):
-					jdx = 0
-					for j in range(0,width,self.kernel_size[1]):
-						sliding_window = np.zeros(delta_w[image,channel,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].reshape(-1).shape)
-						sliding_window[self.reg[image,channel,idx,jdx]] = delta_loss[image,channel,idx,jdx]
-						sliding_window = sliding_window.reshape(delta_w[image,channel,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].shape)
-						delta_w[image,channel,i:i+self.kernel_size[0],j:j+self.kernel_size[1]] = sliding_window
-						jdx += 1
-					idx += 1
+		idx = 0
+		for i in range(0,height,self.kernel_size[0]):
+			jdx = 0
+			for j in range(0,width,self.kernel_size[1]):
+				sliding_window = np.zeros(delta_w[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].reshape(-1).shape)
+				sliding_window[self.reg[:,:,idx,jdx]] = delta_loss[:,:,idx,jdx]
+				sliding_window = sliding_window.reshape(delta_w[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]].shape)
+				delta_w[:,:,i:i+self.kernel_size[0],j:j+self.kernel_size[1]] = sliding_window
+				jdx += 1
+			idx += 1
 		return delta_w
 
