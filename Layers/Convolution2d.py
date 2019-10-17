@@ -10,8 +10,8 @@ class Conv2d(object):
 		k = in_channels*kernel_size[0]*kernel_size[1]
 		self.kernel = np.random.uniform(-np.sqrt(k),np.sqrt(k),(out_channels,in_channels,kernel_size[0],kernel_size[1]))
 		self.is_bias = bias
-#		if bias:
-#			self.bias = np.random.uniform(-np.sqrt(k),np.sqrt(k),())
+		if bias:
+			self.bias = np.random.uniform(-np.sqrt(k),np.sqrt(k),(out_channels))
 	def forward(self,x):
 		input_shape = x.shape
 		padded_height  = input_shape[2]+self.padding[0]*2
@@ -34,6 +34,8 @@ class Conv2d(object):
 				out_x[:,:,x,y] = output.sum(axis=(2,3,4))
 				y += 1
 			x += 1
+		if self.is_bias:
+			out_x += self.bias.reshape(1,-1,1,1)
 		return out_x
 	def backprop(self, delta_loss, lr):
 		delta_kernel = np.zeros(self.kernel.shape)
@@ -51,7 +53,7 @@ class Conv2d(object):
 		origin_kernel = self.kernel
 		self.kernel -= lr * delta_kernel
 		if self.is_bias:
-			self.bias -= lr * delta_loss
+			self.bias -= (lr * delta_loss).mean(axis=(0,2,3))
 		#calculate convolution of delta_loss(padded) and kernel(flipped) means the gradient of input
 		flipped_kernel = np.flip(origin_kernel,axis=(2,3)).transpose(1,0,2,3)
 		padded_loss = np.zeros((delta_loss.shape[0],delta_loss.shape[1],delta_loss.shape[2]+2,delta_loss.shape[3]+2))
