@@ -1,10 +1,3 @@
-import numpy as np
-def unpickle(file):
-    import pickle
-    with open(file, 'rb') as fo:
-        dict = pickle.load(fo, encoding='bytes')
-    return dict
-
 from Layers.Convolution2d import Conv2d
 from Layers.Maxpool2d import Maxpool2d
 from Layers.Linear import Linear
@@ -39,12 +32,8 @@ def softmax(X):
     return exps / np.sum(exps,axis = 1).reshape(-1,1)
 
 
-data = unpickle('data/cifar-10-batches-py/data_batch_1')
-train_x = np.asarray(data[b'data']).reshape(10000,3,32,32)
-train_y = np.asarray(data[b'labels']).reshape(10000,-1)
-data = unpickle('data/cifar-10-batches-py/test_batch')
-test_x = np.asarray(data[b'data']).reshape(10000,3,32,32)
-test_y = np.asarray(data[b'labels']).reshape(10000,-1)
+train_x, train_y = Load_file('cifar10', 'train')
+test_x,test_y    = Load_file('cifar10', 'test')
 train_y_onehot = []
 for i in range(len(train_y)):
 	tmp = np.zeros(10)

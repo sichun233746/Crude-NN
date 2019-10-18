@@ -17,7 +17,7 @@ class Linear():
         if self.is_bias:
             x += self.bias
         return x
-    def backpro(self, delta_loss, lr = 0.1):
+    def backprop(self, delta_loss, lr = 0.1):
         delta_w = np.asmatrix(self.reg).T * np.asmatrix(delta_loss)
         self.weight -= lr*delta_w
         if self.is_bias:
